@@ -6,12 +6,22 @@ return {
 			local telescope = require("telescope")
 			local builtin = require("telescope.builtin")
 
+			local actions = require("telescope.actions")
+
 			telescope.setup({
 				defaults = {
 					layout_config = {
 						prompt_position = "top",
 					},
 					sorting_strategy = "ascending",
+					mappings = {
+						i = {
+							["<C-j>"] = actions.move_selection_next,
+							["<C-k>"] = actions.move_selection_previous,
+							["<C-h>"] = actions.preview_scrolling_left,
+							["<C-l>"] = actions.preview_scrolling_right,
+						},
+					},
 				},
 			})
 
