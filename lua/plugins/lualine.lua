@@ -16,14 +16,14 @@ return {
 					theme = "auto",
 					globalstatus = true,
 					component_separators = { left = "·", right = "·" },
-					section_separators = { left = "", right = "" },
+					section_separators = "",
 					disabled_filetypes = {
 						statusline = { "NvimTree", "alpha" },
 					},
 				},
 				sections = {
 					lualine_a = {
-						{ "mode", separator = { left = "" }, right_padding = 2 },
+						{ "mode", right_padding = 2 },
 					},
 					lualine_b = {
 						{ "branch", icon = "" },
@@ -42,7 +42,7 @@ return {
 					},
 					lualine_y = { "progress" },
 					lualine_z = {
-						{ "location", separator = { right = "" }, left_padding = 2 },
+						{ "location", left_padding = 2 },
 					},
 				},
 				inactive_sections = {
