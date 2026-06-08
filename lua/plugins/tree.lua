@@ -5,7 +5,7 @@ return {
 		config = function()
 			require("nvim-tree").setup({
 				filesystem_watchers = {
-					enable = false,
+					enable = true,
 				},
 			})
 
