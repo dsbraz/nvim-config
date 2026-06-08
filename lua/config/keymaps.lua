@@ -1,3 +1,5 @@
+vim.keymap.set("n", "<leader>bd", vim.cmd.bdelete, { desc = "Close buffer" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local opts = { buffer = args.buf }

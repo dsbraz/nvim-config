@@ -6,8 +6,9 @@ return {
 
 			wk.setup()
 			wk.add({
-				{ "<leader>a", desc = "Harpoon add file" },
-				{ "<leader>c", group = "Code" },
+			{ "<leader>a", desc = "Harpoon add file" },
+			{ "<leader>bd", desc = "Close buffer" },
+			{ "<leader>c", group = "Code" },
 				{ "<leader>cl", desc = "LSP references" },
 				{ "<leader>cs", desc = "Symbols" },
 				{ "<leader>e", desc = "Toggle tree" },
