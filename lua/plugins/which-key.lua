@@ -6,13 +6,14 @@ return {
 
 			wk.setup()
 			wk.add({
-			{ "<leader>a", desc = "Harpoon add file" },
-			{ "<leader>bd", desc = "Close buffer" },
-			{ "<leader>c", group = "Code" },
+				{ "<leader>a", desc = "Harpoon add file" },
+				{ "<leader>bd", desc = "Close buffer" },
+				{ "<leader>c", group = "Code" },
+				{ "<leader>cf", desc = "Format file" },
 				{ "<leader>cl", desc = "LSP references" },
 				{ "<leader>cs", desc = "Symbols" },
 				{ "<leader>e", desc = "Toggle tree" },
-				{ "<leader>f", desc = "Format file" },
+				{ "<leader>f", group = "Find" },
 				{ "<leader>fb", desc = "Find buffers" },
 				{ "<leader>ff", desc = "Find files" },
 				{ "<leader>fg", desc = "Live grep" },
