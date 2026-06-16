@@ -21,6 +21,7 @@ return {
 				{ "<leader>g", group = "Git" },
 				{ "<leader>gB", desc = "Git blame details" },
 				{ "<leader>gb", desc = "Toggle git blame" },
+				{ "<leader>gg", desc = "LazyGit" },
 				{ "<leader>rn", desc = "Rename symbol" },
 				{ "<leader>x", group = "Diagnostics" },
 				{ "<leader>xX", desc = "Buffer diagnostics" },

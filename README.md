@@ -12,6 +12,7 @@ Personal Neovim configuration using `lazy.nvim`.
 - Completion with `nvim-cmp`
 - Formatting with Conform
 - Git signs
+- LazyGit integration
 - Diagnostics with Trouble
 - Keybinding hints with Which Key
 
@@ -22,4 +23,3 @@ init.lua
 lua/config/
 lua/plugins/
 ```
-
