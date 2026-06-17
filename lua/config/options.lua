@@ -6,6 +6,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.termguicolors = true
+vim.opt.clipboard = "unnamedplus"
 vim.opt.guifont = "JetBrainsMono Nerd Font:h15"
 vim.opt.laststatus = 3
 vim.opt.showmode = false
