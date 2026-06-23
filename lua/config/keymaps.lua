@@ -29,6 +29,12 @@ end
 
 vim.keymap.set("n", "<leader>bd", close_buffer_keep_window, { desc = "Close buffer" })
 
+for i = 1, 9 do
+	vim.keymap.set("n", "<A-" .. i .. ">", function()
+		require("bufferline").go_to_buffer(i, true)
+	end, { desc = "Go to buffer " .. i })
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local opts = { buffer = args.buf }
