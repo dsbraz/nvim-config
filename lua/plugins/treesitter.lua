@@ -4,7 +4,18 @@ return {
 		lazy = false,
 		build = ":TSUpdate",
 		config = function()
-			local treesitter_languages = { "lua", "vim", "vimdoc", "go", "python", "javascript", "typescript" }
+			local treesitter_languages = {
+				"lua",
+				"vim",
+				"vimdoc",
+				"go",
+				"python",
+				"javascript",
+				"typescript",
+				"c_sharp",
+				"razor",
+				"html",
+			}
 
 			require("nvim-treesitter").setup()
 			require("nvim-treesitter").install(treesitter_languages)
