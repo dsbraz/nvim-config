@@ -24,6 +24,7 @@ return {
 				{ "<leader>gg", desc = "LazyGit" },
 				{ "<leader>rn", desc = "Rename symbol" },
 				{ "<leader>x", group = "Diagnostics" },
+				{ "<leader>xd", desc = "Diagnostic under cursor" },
 				{ "<leader>xX", desc = "Buffer diagnostics" },
 				{ "<leader>xx", desc = "Diagnostics" },
 			})
