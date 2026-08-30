@@ -4,10 +4,31 @@ return {
 		version = "*",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			local catppuccin_theme = require("catppuccin.special.bufferline").get_theme({
+				styles = { "bold" },
+			})
+
+			local function bufferline_theme()
+				local colors = require("catppuccin.palettes").get_palette()
+				local highlights = catppuccin_theme()
+				local selected = { fg = colors.crust, bg = colors.blue, bold = true }
+
+				highlights.buffer_selected = selected
+				highlights.duplicate_selected = selected
+				highlights.numbers_selected = selected
+				highlights.indicator_selected = { fg = colors.blue, bg = colors.blue }
+				highlights.separator_selected = { fg = colors.crust, bg = colors.blue }
+				highlights.modified_selected = { fg = colors.peach, bg = colors.blue, bold = true }
+				highlights.error_selected = { fg = colors.red, bg = colors.blue, bold = true }
+				highlights.error_diagnostic_selected = { fg = colors.red, bg = colors.blue }
+				highlights.warning_selected = { fg = colors.yellow, bg = colors.blue, bold = true }
+				highlights.warning_diagnostic_selected = { fg = colors.yellow, bg = colors.blue }
+
+				return highlights
+			end
+
 			require("bufferline").setup({
-				highlights = require("catppuccin.special.bufferline").get_theme({
-					styles = { "bold" },
-				}),
+				highlights = bufferline_theme,
 				options = {
 					mode = "buffers",
 					numbers = "none",
@@ -24,9 +45,9 @@ return {
 						return #indicators > 0 and " " .. table.concat(indicators, " ") or ""
 					end,
 					indicator = {
-						style = "underline",
+						style = "none",
 					},
-					separator_style = "slant",
+					separator_style = "thin",
 					modified_icon = "● ",
 					always_show_bufferline = false,
 					show_buffer_close_icons = false,
