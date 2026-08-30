@@ -14,8 +14,21 @@ return {
 			end
 
 			local function sync_macos_appearance()
-				vim.o.background = macos_appearance()
+				local background = macos_appearance()
+				local expected_colorscheme = background == "dark" and "catppuccin-mocha" or "catppuccin-latte"
+
+				if vim.o.background == background and vim.g.colors_name == expected_colorscheme then
+					return
+				end
+
+				vim.o.background = background
 				vim.cmd.colorscheme("catppuccin")
+
+				vim.schedule(function()
+					if package.loaded["lualine"] then
+						require("lualine").setup()
+					end
+				end)
 			end
 
 			require("catppuccin").setup({

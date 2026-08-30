@@ -6,53 +6,73 @@ return {
 			local function macro_recording()
 				local recording_register = vim.fn.reg_recording()
 				if recording_register ~= "" then
-					return "recording @" .. recording_register
+					return "󰑋  recording @" .. recording_register
 				end
 				return ""
 			end
 
 			require("lualine").setup({
 				options = {
-					theme = "auto",
+					theme = "catppuccin-nvim",
 					globalstatus = true,
-					component_separators = { left = "·", right = "·" },
-					section_separators = "",
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
 					disabled_filetypes = {
 						statusline = { "NvimTree", "alpha" },
 					},
 				},
 				sections = {
-					lualine_a = {
-						{ "mode", right_padding = 2 },
-					},
-					lualine_b = {
-						{ "branch", icon = "" },
-						{ "diff", symbols = { added = "+", modified = "~", removed = "-" } },
-						{ "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " } },
-						{ macro_recording, color = { fg = "#ff9e64" } },
-					},
+					lualine_a = { "mode" },
+					lualine_b = { { "branch", icon = "" } },
 					lualine_c = {
-						{ "filename", path = 1, symbols = { modified = " ●", readonly = " ", unnamed = "[No Name]" } },
-						{ "searchcount" },
+						{
+							"diagnostics",
+							colored = true,
+							symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
+						},
+						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+						{
+							"filename",
+							path = 1,
+							shorting_target = 40,
+							symbols = { modified = " ●", readonly = " ", unnamed = "[No Name]" },
+						},
 					},
 					lualine_x = {
-						{ "filesize" },
-						{ "encoding" },
-						{ "filetype", icon_only = false },
+						{ macro_recording, color = "Statement" },
+						{ "searchcount" },
+						{
+							require("lazy.status").updates,
+							cond = require("lazy.status").has_updates,
+							color = "Special",
+						},
+						{
+							"diff",
+							colored = true,
+							symbols = { added = " ", modified = " ", removed = " " },
+							source = function()
+								local status = vim.b.gitsigns_status_dict
+								if status then
+									return {
+										added = status.added,
+										modified = status.changed,
+										removed = status.removed,
+									}
+								end
+							end,
+						},
 					},
-					lualine_y = { "progress" },
+					lualine_y = {
+						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+						{ "location", padding = { left = 0, right = 1 } },
+					},
 					lualine_z = {
-						{ "location", left_padding = 2 },
+						function()
+							return " " .. os.date("%R")
+						end,
 					},
 				},
-				inactive_sections = {
-					lualine_a = { "filename" },
-					lualine_b = {},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {},
-					lualine_z = { "location" },
-				},
+				extensions = { "lazy", "trouble" },
 			})
 		end,
 	},
