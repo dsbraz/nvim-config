@@ -13,9 +13,16 @@ return {
 				local highlights = catppuccin_theme()
 				local selected = { fg = colors.crust, bg = colors.blue, bold = true }
 
+				for name, highlight in pairs(highlights) do
+					if name:match("_selected$") then
+						highlight.bg = colors.blue
+					end
+				end
+
 				highlights.buffer_selected = selected
 				highlights.duplicate_selected = selected
 				highlights.numbers_selected = selected
+				highlights.pick_selected = selected
 				highlights.indicator_selected = { fg = colors.blue, bg = colors.blue }
 				highlights.separator_selected = { fg = colors.crust, bg = colors.blue }
 				highlights.modified_selected = { fg = colors.peach, bg = colors.blue, bold = true }
