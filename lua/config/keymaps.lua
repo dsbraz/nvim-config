@@ -29,8 +29,11 @@ end
 
 vim.keymap.set("n", "<leader>bd", close_buffer_keep_window, { desc = "Close buffer" })
 
+vim.keymap.set("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "]b", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+
 for i = 1, 9 do
-	vim.keymap.set("n", "<A-" .. i .. ">", function()
+	vim.keymap.set("n", "<leader>" .. i, function()
 		require("bufferline").go_to_buffer(i, true)
 	end, { desc = "Go to buffer " .. i })
 end
