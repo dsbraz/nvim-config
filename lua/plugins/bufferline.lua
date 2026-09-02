@@ -12,9 +12,10 @@ return {
 				local colors = require("catppuccin.palettes").get_palette()
 				local highlights = catppuccin_theme()
 				local selected = { fg = colors.crust, bg = colors.blue, bold = true }
+				local visible = { fg = colors.crust, bg = colors.blue }
 
 				for name, highlight in pairs(highlights) do
-					if name:match("_selected$") then
+					if name:match("_selected$") or name:match("_visible$") then
 						highlight.bg = colors.blue
 					end
 				end
@@ -23,6 +24,10 @@ return {
 				highlights.duplicate_selected = selected
 				highlights.numbers_selected = selected
 				highlights.pick_selected = selected
+				highlights.buffer_visible = visible
+				highlights.duplicate_visible = visible
+				highlights.numbers_visible = visible
+				highlights.pick_visible = visible
 				highlights.indicator_selected = { fg = colors.blue, bg = colors.blue }
 				highlights.separator_selected = { fg = colors.crust, bg = colors.blue }
 				highlights.modified_selected = { fg = colors.peach, bg = colors.blue, bold = true }
